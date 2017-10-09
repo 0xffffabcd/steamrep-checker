@@ -25,7 +25,7 @@
 			]
 		}
 	],
-	"homepage_url" : "https://github.com/0xffffabcd/steamrep-checker-chrome",
+	"homepage_url" : "https://github.com/0xffffabcd/steamrep-checker",
 	"permissions" : [
 		"activeTab",
 		"*://steamcommunity.com/*",

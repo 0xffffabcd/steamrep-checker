@@ -2,7 +2,7 @@
 	"manifest_version" : 2,
 	"name" : "SteamRep Checker",
 	"short_name" : "SR Checker",
-	"version" : "0.2.0",
+	"version" : "0.8.0",
 	"description" : "This extension checks the reputation of a Steam user on SteamRep.",
 	"icons" : {
 		"16" : "ext_icons/icon16.png",

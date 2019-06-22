@@ -31,6 +31,7 @@
 var Settings = (function () {
     function Settings() {
         this.prefBackpack = true;
+        this.prefRep = true;
         this.prefDotaBP = true;
         this.prefSteamgifts = true;
         this.prefCSGOValue = true;
@@ -332,6 +333,8 @@ var SteamRepChecker = (function () {
         src.appendChild(extLinks);
         if (this.settings.prefBackpack)
             extLinks.appendChild(Helpers.addExtLink('https://backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Backpack.tf'));
+        if (this.settings.prefRep)
+            extLinks.appendChild(Helpers.addExtLink('https://rep.tf/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Rep.tf'));                                           
         if (this.settings.prefDotaBP)
             extLinks.appendChild(Helpers.addExtLink('https://dota2.backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiDota2bp), 'Dota2.BP.TF'));
         if (this.settings.prefCSGOValue)

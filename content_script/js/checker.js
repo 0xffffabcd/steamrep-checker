@@ -201,6 +201,7 @@ var Icons = {
     ShieldRed: new IconInfo(24, 24, chrome.extension.getURL("icons/shield_red_24.png"), "scammer", '', ''),
     Loading: new IconInfo(16, 16, chrome.extension.getURL("icons/loading.gif"), "loading", "loading", ''),
     fiTF2Bp: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/bp.tf.png"), "Backpack.tf", "src_icon", ''),
+    fiRep: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/rep.png"), "Rep.tf", "src_icon", ''),
     fiDota2bp: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/d2.bp.tf.png"), "D2.backpack.tf", "src_icon", ''),
     fiSteamgifts: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/st.png"), "Steamgifts", "src_icon", ''),
     fiCSGOValue: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/CSGOValue.png"), "CSGOValue", "src_icon", ''),
@@ -334,7 +335,7 @@ var SteamRepChecker = (function () {
         if (this.settings.prefBackpack)
             extLinks.appendChild(Helpers.addExtLink('https://backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Backpack.tf'));
         if (this.settings.prefRep)
-            extLinks.appendChild(Helpers.addExtLink('https://rep.tf/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Rep.tf'));                                           
+            extLinks.appendChild(Helpers.addExtLink('https://rep.tf/' + this.user.steamID64, Helpers.createImageElement(Icons.fiRep), 'Rep.tf'));                                           
         if (this.settings.prefDotaBP)
             extLinks.appendChild(Helpers.addExtLink('https://dota2.backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiDota2bp), 'Dota2.BP.TF'));
         if (this.settings.prefCSGOValue)

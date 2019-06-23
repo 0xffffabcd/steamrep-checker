@@ -46,7 +46,7 @@ var Settings = (function () {
 }());
 /**
  * Steam user object
- *
+ * 
  * @type {{SteamID64: string, VacBanned: string, TradeBanState: string, IsLimitedAccount: string, Privacy: string}}
  */
 var User = (function () {
@@ -145,7 +145,7 @@ var Helpers = (function () {
         return imageElement;
     };
     /**
-     * Create a warning dialog in case the Steam user is a known scammer
+     * Create a warning dialog in case the Steam user is a known scammer !
      */
     Helpers.createScammerWarningDialog = function () {
         var scammerWarningDialog = document.createElement('div');
@@ -332,10 +332,10 @@ var SteamRepChecker = (function () {
         extLinks.id = 'ext_links';
         var src = document.getElementById('steamrep_checker');
         src.appendChild(extLinks);
-        if (this.settings.prefBackpack)
-            extLinks.appendChild(Helpers.addExtLink('https://backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Backpack.tf'));
         if (this.settings.prefRep)
             extLinks.appendChild(Helpers.addExtLink('https://rep.tf/' + this.user.steamID64, Helpers.createImageElement(Icons.fiRep), 'Rep.tf'));                                           
+        if (this.settings.prefBackpack)
+            extLinks.appendChild(Helpers.addExtLink('https://backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Backpack.tf'));
         if (this.settings.prefDotaBP)
             extLinks.appendChild(Helpers.addExtLink('https://dota2.backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiDota2bp), 'Dota2.BP.TF'));
         if (this.settings.prefCSGOValue)

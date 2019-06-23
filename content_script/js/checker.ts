@@ -32,11 +32,8 @@ declare var chrome;
  * settings class
  */
 class Settings {
-    public prefRep = true;
     public prefBackpack = true;
-    public prefTf2tools = true;            //http://www.tf2tools.net/id/
-    public prefTf2b = true;                //https://tf2b.com/tf2
-    public prefFabricator = true;          //http://fabricator.tf/profile/
+    public prefRep = true;
     public prefDotaBP = true;
     public prefSteamgifts = true;
     public prefCSGOValue = true;
@@ -46,11 +43,6 @@ class Settings {
     public prefDota2Lounge = true;
     public prefTf2Outpost = true;
     public prefTf2TradingPost = true;
-
-
-
-
-
 }
 
 /**
@@ -241,11 +233,8 @@ let Icons = {
     ShieldYellow: new IconInfo(24, 24, chrome.extension.getURL("icons/shield_yellow_24.png"), "caution", '', ''),
     ShieldRed: new IconInfo(24, 24, chrome.extension.getURL("icons/shield_red_24.png"), "scammer", '', ''),
     Loading: new IconInfo(16, 16, chrome.extension.getURL("icons/loading.gif"), "loading", "loading", ''),
-    fiRep: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/rep.png"), "Rep.tf", "src_icon", ''),
     fiTF2Bp: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/bp.tf.png"), "Backpack.tf", "src_icon", ''),
-    prefTf2tools: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/tf2tools.png"), "Tf2tools.net", "src_icon", ''),
-    prefTf2b: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/tf2b.png"), "Tf2b.com", "src_icon", ''),
-    prefFabricator: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/fabricator.png"), "Fabricator.tf", "src_icon", ''),
+    fiRep: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/rep.png"), "Rep.tf", "src_icon", ''),
     fiDota2bp: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/d2.bp.tf.png"), "D2.backpack.tf", "src_icon", ''),
     fiSteamgifts: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/st.png"), "Steamgifts", "src_icon", ''),
     fiCSGOValue: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/CSGOValue.png"), "CSGOValue", "src_icon", ''),
@@ -436,16 +425,11 @@ class SteamRepChecker {
 
         const src = document.getElementById('steamrep_checker');
         src.appendChild(extLinks);
-        if (this.settings.prefRep)
-        extLinks.appendChild(Helpers.addExtLink('https://rep.tf/' + this.user.steamID64, Helpers.createImageElement(Icons.fiRep), 'Rep.tf'));                                           
+
         if (this.settings.prefBackpack)
-            extLinks.appendChild(Helpers.addExtLink('https://backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Backpack.tf')); 
-        if (this.settings.prefTf2tools)
-            extLinks.appendChild(Helpers.addExtLink('http://www.tf2tools.net/id/' + this.user.steamID64, Helpers.createImageElement(Icons.fiRep), 'Tf2tools.net'));                                           
-        if (this.settings.prefTf2b)
-            extLinks.appendChild(Helpers.addExtLink('https://tf2b.com/tf2/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTf2b), 'Tf2b.com'));                                           
-        if (this.settings.prefFabricator)
-            extLinks.appendChild(Helpers.addExtLink('http://fabricator.tf/profile/' + this.user.steamID64, Helpers.createImageElement(Icons.fiFabricator), 'Fabricator.tf'));   
+            extLinks.appendChild(Helpers.addExtLink('https://backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Backpack.tf'));
+        if (this.settings.prefRep)
+            extLinks.appendChild(Helpers.addExtLink('https://rep.tf/' + this.user.steamID64, Helpers.createImageElement(Icons.fiRep), 'Rep.tf'));
         if (this.settings.prefDotaBP)
             extLinks.appendChild(Helpers.addExtLink('https://dota2.backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiDota2bp), 'Dota2.BP.TF'));
         if (this.settings.prefCSGOValue)
@@ -462,6 +446,9 @@ class SteamRepChecker {
             extLinks.appendChild(Helpers.addExtLink('https://dota2lounge.com/profile?id=' + this.user.steamID64, Helpers.createImageElement(Icons.fiDota2Lounge), 'Dota2Lounge.com'));
         if (this.settings.prefTf2Outpost)
             extLinks.appendChild(Helpers.addExtLink('https://www.tf2outpost.com/user/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTf2Outpost), 'TF2Outpost.com'));
+        if (this.settings.prefTf2TradingPost)
+            extLinks.appendChild(Helpers.addExtLink('https://tf2tp.com/user/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTradingPost), 'TF2TP.com'));
+
     }
 
     /**

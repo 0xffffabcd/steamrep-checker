@@ -1,8 +1,8 @@
 {
-	"manifest_version" : 1,
-	"name" : "SteamRep Checker TF2",
-	"short_name" : "SR Checker TF2",
-	"version" : "0.8.0_mod",
+	"manifest_version" : 2,
+	"name" : "SteamRep Checker",
+	"short_name" : "SR Checker",
+	"version" : "0.8.0",
 	"description" : "This extension checks the reputation of a Steam user on SteamRep.",
 	"icons" : {
 		"16" : "ext_icons/icon16.png",
@@ -12,7 +12,7 @@
 		"128" : "ext_icons/icon128.png"
 	},
 
-	"author" : "Stocco Matis <stoccomatis7@gmail.com>",
+	"author" : "Nasreddine Houria <nasreddine.houria@gmail.com>",
 
 	"content_scripts" : [{
 			"matches" : [
@@ -25,7 +25,7 @@
 			]
 		}
 	],
-	"homepage_url" : "https://github.com/Rush-er/steamrep-checker/",
+	"homepage_url" : "https://github.com/0xffffabcd/steamrep-checker",
 	"permissions" : [
 		"activeTab",
 		"*://steamcommunity.com/*",

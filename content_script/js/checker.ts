@@ -1,7 +1,7 @@
 /**
  * # The MIT License (MIT)
  *
- * Copyright (c) 2017 Nasreddine HOURIA
+ * Copyright (c) 2019 Nasreddine HOURIA
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,13 +36,12 @@ class Settings {
     public prefRep = true;
     public prefDotaBP = true;
     public prefSteamgifts = true;
-    public prefCSGOValue = true;
+    public prefSteamTrades = true;
     public prefGoogle = true;
     public prefBazaar = true;
     public prefCsgoLounge = true;
     public prefDota2Lounge = true;
-    public prefTf2Outpost = true;
-    public prefTf2TradingPost = true;
+    public csgoExchange = true;
 }
 
 /**
@@ -229,23 +228,27 @@ class Helpers {
 }
 
 let Icons = {
+    // Shields
     ShieldGreen: new IconInfo(24, 24, chrome.extension.getURL("icons/shield_green_24.png"), "trusted", '', ''),
     ShieldYellow: new IconInfo(24, 24, chrome.extension.getURL("icons/shield_yellow_24.png"), "caution", '', ''),
     ShieldRed: new IconInfo(24, 24, chrome.extension.getURL("icons/shield_red_24.png"), "scammer", '', ''),
+    ShieldRedBig: new IconInfo(128, 128, chrome.extension.getURL("icons/shield_red_128.png"), "scammer", "", "left"),
+
+    // Loading
     Loading: new IconInfo(16, 16, chrome.extension.getURL("icons/loading.gif"), "loading", "loading", ''),
+
+    // Websites
     fiTF2Bp: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/bp.tf.png"), "Backpack.tf", "src_icon", ''),
     fiRep: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/rep.png"), "Rep.tf", "src_icon", ''),
     fiDota2bp: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/d2.bp.tf.png"), "D2.backpack.tf", "src_icon", ''),
-    fiSteamgifts: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/st.png"), "Steamgifts", "src_icon", ''),
-    fiCSGOValue: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/CSGOValue.png"), "CSGOValue", "src_icon", ''),
+    fiSteamgifts: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/st.png"), "SteamGifts", "src_icon", ''),
+    fiStreamTrades: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/steamtrades.ico"), "SteamTrades", "src_icon", ''),
     fiGoogle: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/google.png"), "Google", "src_icon", ''),
     fiBazaar: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/bazaar.png"), "Bazaar.tf", "src_icon", ''),
     fiCsgoLounge: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/csgo_lounge.png"), "CSGO Lounge", "src_icon", ''),
     fiDota2Lounge: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/dota2_lounge.png"), "Dota 2 Lounge", "src_icon", ''),
-    fiTf2Outpost: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/tf2outpost.png"), "Outpost", "src_icon", ''),
-    fiTradingPost: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/tf2tp.png"), "Tf2 Trading Post", "src_icon", ''),
     fiSteamrep: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/sr.png"), "Steamrep", "src_icon", ''),
-    ShieldRedBig: new IconInfo(128, 128, chrome.extension.getURL("icons/shield_red_128.png"), "scammer", "", "left")
+    fiCsgoExchange: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/csgo_exchange.png"), "CSGO Exchange", "src_icon", ''),
 };
 
 /**
@@ -426,28 +429,33 @@ class SteamRepChecker {
         const src = document.getElementById('steamrep_checker');
         src.appendChild(extLinks);
 
+        // TF2
         if (this.settings.prefBackpack)
             extLinks.appendChild(Helpers.addExtLink('https://backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Backpack.tf'));
         if (this.settings.prefRep)
             extLinks.appendChild(Helpers.addExtLink('https://rep.tf/' + this.user.steamID64, Helpers.createImageElement(Icons.fiRep), 'Rep.tf'));
-        if (this.settings.prefDotaBP)
-            extLinks.appendChild(Helpers.addExtLink('https://dota2.backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiDota2bp), 'Dota2.BP.TF'));
-        if (this.settings.prefCSGOValue)
-            extLinks.appendChild(Helpers.addExtLink('https://www.CSGOValue.com/?steamID=' + this.user.steamID64, Helpers.createImageElement(Icons.fiCSGOValue), 'CSGOValue.com'));
-        if (this.settings.prefSteamgifts)
-            extLinks.appendChild(Helpers.addExtLink('https://www.steamgifts.com/go/user/' + this.user.steamID64, Helpers.createImageElement(Icons.fiSteamgifts), 'SteamGifts.com'));
-        if (this.settings.prefGoogle)
-            extLinks.appendChild(Helpers.addExtLink('https://www.google.com/search?q=' + this.user.steamID64, Helpers.createImageElement(Icons.fiGoogle), 'Google'));
         if (this.settings.prefBazaar)
             extLinks.appendChild(Helpers.addExtLink('https://bazaar.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiBazaar), 'Bazaar.tf'));
-        if (this.settings.prefCsgoLounge)
-            extLinks.appendChild(Helpers.addExtLink('https://csgolounge.com/profile?id=' + this.user.steamID64, Helpers.createImageElement(Icons.fiCsgoLounge), 'CSGO Lounge'));
+
+        // Dota 2
         if (this.settings.prefDota2Lounge)
             extLinks.appendChild(Helpers.addExtLink('https://dota2lounge.com/profile?id=' + this.user.steamID64, Helpers.createImageElement(Icons.fiDota2Lounge), 'Dota2Lounge.com'));
-        if (this.settings.prefTf2Outpost)
-            extLinks.appendChild(Helpers.addExtLink('https://www.tf2outpost.com/user/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTf2Outpost), 'TF2Outpost.com'));
-        if (this.settings.prefTf2TradingPost)
-            extLinks.appendChild(Helpers.addExtLink('https://tf2tp.com/user/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTradingPost), 'TF2TP.com'));
+        if (this.settings.prefDotaBP)
+            extLinks.appendChild(Helpers.addExtLink('https://dota2.backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiDota2bp), 'Dota2.BP.TF'));
+
+        // CSGO 
+        if (this.settings.csgoExchange)
+            extLinks.appendChild(Helpers.addExtLink('https://csgo.exchange/id/' + this.user.steamID64, Helpers.createImageElement(Icons.fiCsgoExchange), 'CSGO Exchange'));
+        if (this.settings.prefCsgoLounge)
+            extLinks.appendChild(Helpers.addExtLink('https://csgolounge.com/profile?id=' + this.user.steamID64, Helpers.createImageElement(Icons.fiCsgoLounge), 'CSGO Lounge'));
+
+        // General
+        if (this.settings.prefSteamgifts)
+            extLinks.appendChild(Helpers.addExtLink('https://www.steamgifts.com/go/user/' + this.user.steamID64, Helpers.createImageElement(Icons.fiSteamgifts), 'SteamGifts.com'));
+        if (this.settings.prefSteamTrades)
+            extLinks.appendChild(Helpers.addExtLink('https://www.steamtrades.com/user/' + this.user.steamID64, Helpers.createImageElement(Icons.fiStreamTrades), 'SteamTrades.com'));
+        if (this.settings.prefGoogle)
+            extLinks.appendChild(Helpers.addExtLink('https://www.google.com/search?q=' + this.user.steamID64, Helpers.createImageElement(Icons.fiGoogle), 'Google'));
 
     }
 

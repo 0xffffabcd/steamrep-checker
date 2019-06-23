@@ -1,5 +1,5 @@
 {
-	"manifest_version" : 0.1,
+	"manifest_version" : 1,
 	"name" : "SteamRep Checker TF2",
 	"short_name" : "SR Checker TF2",
 	"version" : "0.8.0_mod",

@@ -31,6 +31,7 @@
 var Settings = (function () {
     function Settings() {
         this.prefBackpack = true;
+        this.prefRep = true;
         this.prefDotaBP = true;
         this.prefSteamgifts = true;
         this.prefCSGOValue = true;
@@ -45,7 +46,7 @@ var Settings = (function () {
 }());
 /**
  * Steam user object
- *
+ * 
  * @type {{SteamID64: string, VacBanned: string, TradeBanState: string, IsLimitedAccount: string, Privacy: string}}
  */
 var User = (function () {
@@ -144,7 +145,7 @@ var Helpers = (function () {
         return imageElement;
     };
     /**
-     * Create a warning dialog in case the Steam user is a known scammer
+     * Create a warning dialog in case the Steam user is a known scammer !
      */
     Helpers.createScammerWarningDialog = function () {
         var scammerWarningDialog = document.createElement('div');
@@ -200,6 +201,7 @@ var Icons = {
     ShieldRed: new IconInfo(24, 24, chrome.extension.getURL("icons/shield_red_24.png"), "scammer", '', ''),
     Loading: new IconInfo(16, 16, chrome.extension.getURL("icons/loading.gif"), "loading", "loading", ''),
     fiTF2Bp: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/bp.tf.png"), "Backpack.tf", "src_icon", ''),
+    fiRep: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/rep.png"), "Rep.tf", "src_icon", ''),
     fiDota2bp: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/d2.bp.tf.png"), "D2.backpack.tf", "src_icon", ''),
     fiSteamgifts: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/st.png"), "Steamgifts", "src_icon", ''),
     fiCSGOValue: new IconInfo(16, 16, chrome.extension.getURL("icons/websites/CSGOValue.png"), "CSGOValue", "src_icon", ''),
@@ -330,6 +332,8 @@ var SteamRepChecker = (function () {
         extLinks.id = 'ext_links';
         var src = document.getElementById('steamrep_checker');
         src.appendChild(extLinks);
+        if (this.settings.prefRep)
+            extLinks.appendChild(Helpers.addExtLink('https://rep.tf/' + this.user.steamID64, Helpers.createImageElement(Icons.fiRep), 'Rep.tf'));                                           
         if (this.settings.prefBackpack)
             extLinks.appendChild(Helpers.addExtLink('https://backpack.tf/profiles/' + this.user.steamID64, Helpers.createImageElement(Icons.fiTF2Bp), 'Backpack.tf'));
         if (this.settings.prefDotaBP)

@@ -1,7 +1,7 @@
 {
-	"manifest_version" : 2_mod,
+	"manifest_version" : 0.1,
 	"name" : "SteamRep Checker TF2",
-	"short_name" : "SR Checker TF"2,
+	"short_name" : "SR Checker TF2",
 	"version" : "0.8.0_mod",
 	"description" : "This extension checks the reputation of a Steam user on SteamRep.",
 	"icons" : {
